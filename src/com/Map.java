@@ -1,6 +1,6 @@
 package com;
 
-public class Map {
+public abstract class Map{
 
 
 
