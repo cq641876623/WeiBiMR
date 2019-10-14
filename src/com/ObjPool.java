@@ -38,8 +38,12 @@ public class ObjPool<T> {
         s1=new StampedLock();
         flag=new boolean[poolSize];
         try {
-            Arrays.fill(objs,Class.forName(tClass.getClass().getName()));
-        } catch (ClassNotFoundException e) {
+            for(int i=0;i<objs.length;i++){
+                objs[i]=(T)type.newInstance();
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
             e.printStackTrace();
         }
     }
